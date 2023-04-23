@@ -1,9 +1,9 @@
+import './App.scss';
+
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Calculator from "./Pages/Calculator";
-
-import './App.scss';
+import Calculator from './Pages/Calculator';
 
 function App() {
   const routes = [
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <main className={"container"}>
+      <main className={'container'}>
         <Routes>
           {routes.map((route, index) => (
             <Route
