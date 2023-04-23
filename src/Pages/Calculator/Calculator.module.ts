@@ -5,14 +5,8 @@ type T_getCounting = (value: string) => {
 
 type T_checkWrongNumber = (str: string) => string;
 
-import bn, { BigNumber } from 'bignumber.js';
-
-const isSymbol = (s: string, withDot?: boolean) => {
-  withDot = withDot !== undefined ? withDot : true;
-
-  return withDot
-    ? ['/', '-', '+', '.', '*'].filter((j) => j === s).length > 0
-    : ['/', '-', '+', '*'].filter((j) => j === s).length > 0;
+const isSymbol = (s: string) => {
+  return ['/', '-', '+', '*'].filter((j) => j === s).length > 0;
 };
 
 const checkWrongNumber: T_checkWrongNumber = (str: string) => {
@@ -47,6 +41,17 @@ const checkWrongNumber: T_checkWrongNumber = (str: string) => {
 
         return validStr;
       }
+    } else if (n0 === '.' && n1 === '.') {
+      validStr =
+        validStr.split('').splice(0, i).join('') +
+        validStr
+          .split('')
+          .splice(i + 1, validStr.length - 1)
+          .join('');
+
+      console.log('validStr: ', validStr);
+
+      return validStr;
     }
   }
   return validStr;
@@ -68,7 +73,7 @@ const getCounting: T_getCounting = (value) => {
 
     const result = String(eval(str));
 
-    if (String(result) === str || result === 'undefined') {
+    if (String(result) === str || result === 'undefined' || result === 'NaN') {
       return { result: null, str: str };
     }
 

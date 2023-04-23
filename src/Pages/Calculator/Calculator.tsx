@@ -99,7 +99,11 @@ const Calculator: React.FC = () => {
             onKeyDown={inputKeyDownHandler}
           />
           <span className={styles.label_output}>
-            {field.output === null ? '' : `= ${field.output}`}
+            {field.input.length < 2
+              ? ''
+              : field.output === null
+              ? 'wrong expression'
+              : `= ${field.output}`}
           </span>
         </label>
 
