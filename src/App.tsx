@@ -3,7 +3,7 @@ import './App.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Calculator from './Pages/Calculator';
+import Calculator from './Pages/Calculator/Calculator';
 
 function App() {
   const routes = [

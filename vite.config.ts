@@ -2,8 +2,6 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => {
-  console.log(mode);
-
   switch (mode) {
     case 'static': {
       return {
@@ -12,7 +10,6 @@ export default defineConfig(({ mode }) => {
       };
     }
     case 'deploy': {
-      console.log('PROD PROD PROD');
       return {
         plugins: [react()],
         base: '/calculator/',

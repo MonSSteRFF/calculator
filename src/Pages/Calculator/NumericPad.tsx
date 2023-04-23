@@ -1,20 +1,20 @@
 import React from 'react';
 
-import styles from './NumericPad.module.scss';
+import styles from './Calculator.module.scss';
 
 interface NumericPad_props {
-  inputChangeHandler: (str: string, add: boolean) => void;
+  padClickHandler: (key: string) => void;
 }
 
 const NumericPad: React.FC<NumericPad_props> = (props) => {
-  const { inputChangeHandler } = props;
+  const { padClickHandler } = props;
 
   const buttons = [
-    ['CA', 'CH', '(', ')'],
+    ['CA', '√', '(', ')'],
     ['7', '8', '9', '-'],
     ['4', '5', '6', '+'],
     ['1', '2', '3', '/'],
-    ['0', '.', 'Enter', '*'],
+    ['0', '.', '=', '*'],
   ];
 
   return (
@@ -23,9 +23,9 @@ const NumericPad: React.FC<NumericPad_props> = (props) => {
         <div className={styles.pad_row} key={row_index}>
           {row.map((btn, btn_index) => (
             <div
-              className={styles.pad_btn + `${btn === 'Enter' ? ` ${styles.enter}` : ''}`}
+              className={styles.pad_btn + `${btn === '=' ? ` ${styles.enter}` : ''}`}
               key={btn_index}
-              onClick={() => inputChangeHandler(btn, true)}
+              onClick={() => padClickHandler(btn === '√' ? 'sqrt' : btn)}
             >
               {btn}
             </div>
