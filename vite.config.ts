@@ -2,14 +2,17 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => {
+  console.log(mode);
+
   switch (mode) {
-    case 'build': {
+    case 'static': {
       return {
         plugins: [react()],
         base: '/',
       };
     }
-    case 'prod': {
+    case 'deploy': {
+      console.log('PROD PROD PROD');
       return {
         plugins: [react()],
         base: '/calculator/',
