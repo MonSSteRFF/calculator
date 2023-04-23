@@ -1,20 +1,21 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Counter from './Pages/Counter';
+import Calculator from "./Pages/Calculator";
+
+import './App.scss';
 
 function App() {
   const routes = [
     {
       path: '/',
-      element: Counter,
+      element: Calculator,
     },
   ];
 
   return (
     <>
-      <header></header>
-      <main>
+      <main className={"container"}>
         <Routes>
           {routes.map((route, index) => (
             <Route
@@ -26,7 +27,6 @@ function App() {
           ))}
         </Routes>
       </main>
-      <footer></footer>
     </>
   );
 }
